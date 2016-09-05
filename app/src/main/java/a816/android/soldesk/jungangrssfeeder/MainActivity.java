@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 int position = tab.getPosition();
                 Log.d("MainActivity", "선택된 탭 : " + position);
 
-                Fragment selected = fragment1;
+                Fragment selected = null;
                 if (position == 0) {
                     selected = allNewsListFragment;
                 } else if (position == 1) {
