@@ -2,13 +2,12 @@ package a816.android.soldesk.jungangrssfeeder;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-
-import a816.android.soldesk.jungangrssfeeder.R;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         fragment3 = new Fragment3();
         fragment4 = new Fragment4();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
 
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
