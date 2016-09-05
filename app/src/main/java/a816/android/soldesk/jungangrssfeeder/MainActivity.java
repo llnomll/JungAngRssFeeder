@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         fragment3 = new Fragment3();
         fragment4 = new Fragment4();
 
-//        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
 
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
