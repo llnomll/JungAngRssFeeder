@@ -17,6 +17,10 @@ import java.util.ArrayList;
 public class NewsListAdapter extends BaseAdapter{
     private ArrayList<NewsDTO> list=new ArrayList<>();
 
+
+    public NewsDTO getNews(int position){
+        return list.get(position);
+    }
     public void setList(ArrayList<NewsDTO> list){
         this.list = list;
     }
@@ -49,8 +53,8 @@ public class NewsListAdapter extends BaseAdapter{
         NewsDTO newsDTO = list.get(i);
 
         tv_title.setText(newsDTO.getTitle());
-        tv_desc.setText(newsDTO.getDescription());
-        tv_link.setText(newsDTO.getLink());
+//        tv_desc.setText(newsDTO.getDescription());
+//        tv_link.setText(newsDTO.getLink());
         tv_pubdate.setText(newsDTO.getPubDate());
         return view;
     }

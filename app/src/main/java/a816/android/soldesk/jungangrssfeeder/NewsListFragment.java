@@ -5,6 +5,7 @@ package a816.android.soldesk.jungangrssfeeder;
  */
 
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,29 +23,40 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class Fragment1 extends Fragment implements AdapterView.OnItemClickListener {
+public class NewsListFragment extends Fragment implements AdapterView.OnItemClickListener {
+    private ProgressDialog loadingDialog;
+    private ListView listView;
+    private NewsListAdapter adapter;
+    private NewsContent newsContent;
 
-    ListView listView;
-    NewsListAdapter adapter;
-    NewsContent newsContent = new NewsContent(new NewsContent.OnNewsParseFinishListener() {
-        @Override
-        public void onNewsParseFinish(ArrayList<NewsDTO> result) {
-            for(int i=0;i<result.size();i++){
-                Log.i("mm", "onNewsParseFinish: "+result.get(i).getTitle());
-            }
-            adapter.setList(result);
-            adapter.notifyDataSetChanged();
-            //어댑터 뉴스 리스트 최신화
-        }
-    });
+    private String uri;
+    public static NewsListFragment newNewsListFragment(String uri){
+        NewsListFragment instance = new NewsListFragment();
+        instance.setUri(uri);
+        return instance;
+    }
 
+    public void setUri(String uri){
+        this.uri = uri;
+    }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment1,null);
-
+        //로딩다이얼로그 보임
+        loadingDialog = ProgressDialog.show(getActivity(),"RSS Refresh", "RSS 정보 업데이트 중...", true, true);
         //doInBackground 메소드를 호출해줌
-        newsContent.execute("http://rss.donga.com/sports.xml");
+        newsContent = new NewsContent(new NewsContent.OnNewsParseFinishListener() {
+            @Override
+            public void onNewsParseFinish(ArrayList<NewsDTO> result) {
+                //로딩다이얼로그 감춤
+                loadingDialog.dismiss();
+                adapter.setList(result);
+                adapter.notifyDataSetChanged();
+                //어댑터 뉴스 리스트 최신화
+            }
+        });
+        newsContent.execute(uri);
 
         //execute();
         //AsyncTask를 실행시킨다. execute()메서드에 의해 가장 먼저 호출되는
@@ -75,14 +87,11 @@ public class Fragment1 extends Fragment implements AdapterView.OnItemClickListen
         //<?> 제너릭 자료행을 스고 싶으나 실제형 인자가
         //무엇인지를 모르거나 신경쓰고 싶지 않을 때 사용
 
-        // 클릭한 데이터를 읽어드림
-//        String content = descvec.get(position);
-//        System.out.println(content);
 //        //새로운 화면을 띄우기 위한 클래스 작성
-//        Intent intent = new Intent().setClass(getActivity(),Content.class);
+        Intent intent = new Intent(getActivity(),Content.class);
 //        //새로운 화면에 데이터를 전달
-//        intent.putExtra("content",content);
+        intent.putExtra("url",adapter.getNews(position).getLink());
 //        //새로운 화면으로 전환
-//        startActivity(intent);
+        startActivity(intent);
     }
 }
