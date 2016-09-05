@@ -31,11 +31,11 @@ public class NewsContent extends AsyncTask<String, Void, ArrayList<NewsDTO>> {
     URL url;
 //    String uri = "http://rss.donga.com/sports.xml";
 
-    String tagname = "";
-    String title="";
-    String description;
-    String pubDate;
-    String link;
+    private String tagname = "";
+    private String title="";
+    private String description="";
+    private String pubDate="";
+    private String link="";
     private static final String TAG_TITLE = "title";
     private static final String TAG_LINK = "link";
     private static final String TAG_PUB_DATE = "pubDate";

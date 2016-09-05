@@ -12,10 +12,10 @@ import android.util.Log;
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
 
-    Fragment1 fragment1;
-    Fragment2 fragment2;
-    Fragment3 fragment3;
-    Fragment4 fragment4;
+    NewsListFragment allNewsListFragment;
+    NewsListFragment socialNewsListFragment;
+    NewsListFragment politicNewsListFragment;
+    NewsListFragment econimicNewsListFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false);
 
-        fragment1 = new Fragment1();
-        fragment2 = new Fragment2();
-        fragment3 = new Fragment3();
-        fragment4 = new Fragment4();
+        allNewsListFragment = NewsListFragment.newNewsListFragment("http://rss.joins.com/joins_news_list.xml");
+        socialNewsListFragment = NewsListFragment.newNewsListFragment("http://rss.joins.com/joins_life_list.xml");
+        politicNewsListFragment = NewsListFragment.newNewsListFragment("http://rss.joins.com/joins_politics_list.xml");
+        econimicNewsListFragment = NewsListFragment.newNewsListFragment("http://rss.joins.com/joins_money_list.xml");
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, allNewsListFragment).commit();
 
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
@@ -51,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
                 Fragment selected = fragment1;
                 if (position == 0) {
-                    selected = fragment1;
+                    selected = allNewsListFragment;
                 } else if (position == 1) {
-                    selected = fragment2;
+                    selected = socialNewsListFragment;
                 } else if (position == 2) {
-                    selected = fragment3;
+                    selected = politicNewsListFragment;
                 } else if (position == 3) {
-                    selected = fragment4;
+                    selected = econimicNewsListFragment;
                 }
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, selected).commit();
