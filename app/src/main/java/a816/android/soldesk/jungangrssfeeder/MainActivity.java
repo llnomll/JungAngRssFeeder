@@ -9,13 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
 
-    NewsListFragment allNewsListFragment;
-    NewsListFragment socialNewsListFragment;
-    NewsListFragment politicNewsListFragment;
-    NewsListFragment econimicNewsListFragment;
+
+    ArrayList<NewsListFragment> tabFragmentList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,23 +25,17 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowTitleEnabled(false);
-
-        allNewsListFragment = NewsListFragment.newNewsListFragment("http://rss.joins.com/joins_news_list.xml");
-        socialNewsListFragment = NewsListFragment.newNewsListFragment("http://rss.joins.com/joins_life_list.xml");
-        politicNewsListFragment = NewsListFragment.newNewsListFragment("http://rss.joins.com/joins_politics_list.xml");
-        econimicNewsListFragment = NewsListFragment.newNewsListFragment("http://rss.joins.com/joins_money_list.xml");
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, allNewsListFragment).commit();
+        ArrayList<CategoryInfo> tab_list = CategoryCreater.create(getIntent().getStringExtra("company"));
 
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-        tabs.addTab(tabs.newTab().setText("전체"));
-        tabs.addTab(tabs.newTab().setText("사회"));
-        tabs.addTab(tabs.newTab().setText("정치"));
-        tabs.addTab(tabs.newTab().setText("경제"));
+        for(int i=0;i<tab_list.size();i++){
+            tabFragmentList.add(NewsListFragment.newNewsListFragment(tab_list.get(i).getUrl()));
+            tabs.addTab(tabs.newTab().setText(tab_list.get(i).getTitle()));
+        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, tabFragmentList.get(0)).commit();
+
+
 
         tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -49,17 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 int position = tab.getPosition();
                 Log.d("MainActivity", "선택된 탭 : " + position);
 
-                Fragment selected = null;
-                if (position == 0) {
-                    selected = allNewsListFragment;
-                } else if (position == 1) {
-                    selected = socialNewsListFragment;
-                } else if (position == 2) {
-                    selected = politicNewsListFragment;
-                } else if (position == 3) {
-                    selected = econimicNewsListFragment;
-                }
-
+                Fragment selected = tabFragmentList.get(position);
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, selected).commit();
             }
 

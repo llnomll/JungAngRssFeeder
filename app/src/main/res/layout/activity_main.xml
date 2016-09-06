@@ -44,7 +44,7 @@
                 android:background="@android:color/background_light"
                 android:elevation="1dp"
                 app:tabGravity="fill"
-                app:tabMode="fixed"
+                app:tabMode="scrollable"
                 app:tabSelectedTextColor="@color/colorAccent"
                 app:tabTextColor="@color/colorPrimary" />
 
