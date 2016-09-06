@@ -35,11 +35,14 @@ public class NewsContent extends AsyncTask<String, Void, ArrayList<NewsDTO>> {
     private String title="";
     private String description="";
     private String pubDate="";
+    private String date="dc:date";
     private String link="";
+
     private static final String TAG_TITLE = "title";
     private static final String TAG_LINK = "link";
     private static final String TAG_PUB_DATE = "pubDate";
     private static final String TAG_DESCRIPTION="description";
+
 
     private OnNewsParseFinishListener listener;
 
@@ -80,7 +83,7 @@ public class NewsContent extends AsyncTask<String, Void, ArrayList<NewsDTO>> {
                         title+=xpp.getText();
                     }else if(TAG_DESCRIPTION.equals(tagname)&&isInItemTag){
                         description+=xpp.getText();
-                    }else if(TAG_PUB_DATE.equals(tagname)&&isInItemTag){
+                    }else if((TAG_PUB_DATE.equals(tagname)|TAG_PUB_DATE.equals(date))&&isInItemTag){
                         pubDate+=xpp.getText();
                     }else if(TAG_LINK.equals(tagname)&&isInItemTag){
                         link+=xpp.getText();

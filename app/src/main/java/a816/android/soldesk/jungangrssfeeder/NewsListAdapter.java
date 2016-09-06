@@ -46,9 +46,9 @@ public class NewsListAdapter extends BaseAdapter{
             view = ((LayoutInflater)viewGroup.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.layout_newsitem,null);
         }
         TextView tv_title = (TextView) view.findViewById(R.id.item_tv_title);
-        TextView tv_link = (TextView) view.findViewById(R.id.item_tv_link);
+        /*TextView tv_link = (TextView) view.findViewById(R.id.item_tv_link);*/
         TextView tv_pubdate = (TextView) view.findViewById(R.id.item_tv_pubdate);
-        TextView tv_desc = (TextView) view.findViewById(R.id.item_tv_desc);
+        /*TextView tv_desc = (TextView) view.findViewById(R.id.item_tv_desc);*/
 
         NewsDTO newsDTO = list.get(i);
 

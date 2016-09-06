@@ -24,6 +24,7 @@ public class Content extends AppCompatActivity {
         wv.setWebViewClient(new WebViewClient());
         wv.getSettings().setSupportZoom(true);
         wv.getSettings().setDisplayZoomControls(true);
+        wv.getSettings().setBuiltInZoomControls(true);
         wv.loadUrl(url);
 
     }
