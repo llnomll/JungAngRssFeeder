@@ -8,11 +8,17 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
+    Button btnBacktoMain;
+    TextView textViewTitle;
+    String title="";
 
 
     ArrayList<NewsListFragment> tabFragmentList = new ArrayList<>();
@@ -21,6 +27,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        textViewTitle = (TextView) findViewById(R.id.textView_title);
+        title += (getIntent().getStringExtra("company")).toString();
+
+        Log.i("title : ",title);
+
+        if (title.equals("jung")) textViewTitle.setText("중앙일보");
+        if (title.equals("cho")) textViewTitle.setText("조선일보");
+        if (title.equals("dong")) textViewTitle.setText("동아일보");
+
+        btnBacktoMain = (Button) findViewById(R.id.btnBacktoMain);
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -57,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         getSupportActionBar().hide();
+    }
+
+    public void onClickBtnBacktoMain(View view) {
+        finish();
+
     }
 }
 

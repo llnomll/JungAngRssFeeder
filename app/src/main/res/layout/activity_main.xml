@@ -35,6 +35,33 @@
             </android.support.v7.widget.Toolbar>
 
             <!-- // Tab buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4374D9"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnBacktoMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:background="#4374D9"
+                    android:onClick="onClickBtnBacktoMain"
+                    android:text="◀ BACK"
+                    android:textSize="8pt" />
+
+                <TextView
+                    android:id="@+id/textView_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="52dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="12pt" />
+
+            </LinearLayout>
 
 
             <android.support.design.widget.TabLayout
