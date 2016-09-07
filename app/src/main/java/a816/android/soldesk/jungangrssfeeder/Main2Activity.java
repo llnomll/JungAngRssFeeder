@@ -34,35 +34,6 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Button bt_cho = (Button) findViewById(R.id.bt_cho);
-        Button bt_jung = (Button) findViewById(R.id.bt_jung);
-        Button bt_dong = (Button) findViewById(R.id.bt_dong);
-
-        bt_cho.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Main2Activity.this,MainActivity.class);
-                intent.putExtra("company","cho");
-                startActivity(intent);
-            }
-        });
-        bt_dong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Main2Activity.this,MainActivity.class);
-                intent.putExtra("company","dong");
-                startActivity(intent);
-            }
-        });
-        bt_jung.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Main2Activity.this,MainActivity.class);
-                intent.putExtra("company","jung");
-                startActivity(intent);
-            }
-        });
-
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -71,17 +42,21 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_camera) { // 중앙 일보
+            Intent intent = new Intent(Main2Activity.this,MainActivity.class);
+            intent.putExtra("company","jung");
+            startActivity(intent);
+        } else if (id == R.id.nav_gallery) { // 조선일보
+            Intent intent = new Intent(Main2Activity.this,MainActivity.class);
+            intent.putExtra("company","cho");
+            startActivity(intent);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_slideshow) { // 동아일보
+            Intent intent = new Intent(Main2Activity.this,MainActivity.class);
+            intent.putExtra("company","dong");
+            startActivity(intent);
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_manage) { //Tools
 
         }
 

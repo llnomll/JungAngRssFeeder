@@ -14,30 +14,11 @@
     tools:showIn="@layout/app_bar_main"
     >
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="동아일보"
-        android:id="@+id/bt_dong"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="중앙일보"
-        android:id="@+id/bt_jung"
-        android:layout_below="@+id/bt_cho"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="조선일보"
-        android:id="@+id/bt_cho"
-        android:layout_below="@+id/bt_dong"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        />
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="메인화면입니다."
+       android:background="#ffbb33"
+       android:textSize="20pt"
+       />
 </RelativeLayout>
