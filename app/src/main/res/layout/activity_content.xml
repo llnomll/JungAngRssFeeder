@@ -6,14 +6,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="#4374D9"
         >
         <Button
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="뒤로가기"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="#4374D9"
+            android:text="◀ BACK"
+            android:textSize="8pt"
             android:onClick="onClickBtnBack"
             />
+
+        <TextView
+            android:id="@+id/textView_list"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="12pt"
+            />
+
     </LinearLayout>
     <WebView
         android:id="@+id/webview_content"
