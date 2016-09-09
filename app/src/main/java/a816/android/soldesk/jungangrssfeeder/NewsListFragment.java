@@ -29,13 +29,15 @@ public class NewsListFragment extends Fragment implements AdapterView.OnItemClic
     private NewsListAdapter adapter;
     private NewsContent newsContent;
 
+    private String encode;
     private String uri;
-    public static NewsListFragment newNewsListFragment(String uri){
+    public static NewsListFragment newNewsListFragment(String uri,String encode){
         NewsListFragment instance = new NewsListFragment();
         instance.setUri(uri);
+        instance.setEcode(encode);
         return instance;
     }
-
+    public void setEcode(String encode){this.encode = encode;}
     public void setUri(String uri){
         this.uri = uri;
     }
@@ -55,7 +57,7 @@ public class NewsListFragment extends Fragment implements AdapterView.OnItemClic
                 adapter.notifyDataSetChanged();
                 //어댑터 뉴스 리스트 최신화
             }
-        });
+        },encode);
         newsContent.execute(uri);
 
         //execute();

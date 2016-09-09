@@ -7,9 +7,20 @@ public class CategoryInfo {
     private String title;
     private String url;
 
-    public CategoryInfo(String title,String url){
+    public String getEncode() {
+        return encode;
+    }
+
+    public void setEncode(String encode) {
+        this.encode = encode;
+    }
+
+    private String encode;
+
+    public CategoryInfo(String title,String url,String encode){
         this.title = title;
         this.url = url;
+        this.encode = encode;
     }
 
     public String getTitle() {

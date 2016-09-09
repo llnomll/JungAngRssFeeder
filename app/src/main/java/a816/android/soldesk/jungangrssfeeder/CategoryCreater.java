@@ -60,25 +60,25 @@ public class CategoryCreater {
         switch (company){
             case "cho":
                 for(int i = 0; i< JOSUN_TITLE.length; i++) {
-                    CategoryInfo ci = new CategoryInfo(JOSUN_TITLE[i], JOSUN_URL[i]);
+                    CategoryInfo ci = new CategoryInfo(JOSUN_TITLE[i], JOSUN_URL[i],"UTF-8");
                     result.add(ci);
                 }
                 break;
             case "jung":
                 for(int i = 0; i< JUNG_TITLE.length; i++){
-                    CategoryInfo ci = new CategoryInfo(JUNG_TITLE[i], JUNG_URL[i]);
+                    CategoryInfo ci = new CategoryInfo(JUNG_TITLE[i], JUNG_URL[i],"UTF-8");
                     result.add(ci);
                 }
                 break;
             case "dong":
                 for(int i = 0; i< DONGA_TITLE.length; i++) {
-                    CategoryInfo ci = new CategoryInfo(DONGA_TITLE[i], DONGA_URL[i]);
+                    CategoryInfo ci = new CategoryInfo(DONGA_TITLE[i], DONGA_URL[i],"UTF-8");
                     result.add(ci);
                 }
                 break;
             case "han":
                 for(int i = 0; i< HAN_TITLE.length; i++) {
-                    CategoryInfo ci = new CategoryInfo(HAN_TITLE[i], HAN_URL[i]);
+                    CategoryInfo ci = new CategoryInfo(HAN_TITLE[i], HAN_URL[i],"EUC-KR");
                     result.add(ci);
                 }
                 break;

@@ -14,6 +14,7 @@ import java.util.Vector;
  * Created by soldesk on 2016-09-01.
  */
 public class NewsContent extends AsyncTask<String, Void, ArrayList<NewsDTO>> {
+    private String encode;
     /*
     *안드로이드에서 AsyncTask는 쓰레드 관리와 UI Thread와의 통신을 원활하게
     * 도와주는 Wrapper Class이다
@@ -46,8 +47,9 @@ public class NewsContent extends AsyncTask<String, Void, ArrayList<NewsDTO>> {
 
     private OnNewsParseFinishListener listener;
 
-    public NewsContent(OnNewsParseFinishListener listener){
+    public NewsContent(OnNewsParseFinishListener listener,String encode){
         this.listener = listener;
+        this.encode = encode;
     }
 
     @Override
@@ -62,7 +64,7 @@ public class NewsContent extends AsyncTask<String, Void, ArrayList<NewsDTO>> {
 
             InputStream in = url.openStream();
 
-            xpp.setInput(in,"UTF-8");
+            xpp.setInput(in,encode);
 
             boolean isInItemTag = false;
 
