@@ -57,7 +57,10 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
             intent.putExtra("company","dong");
             startActivity(intent);
 
-        } else if (id == R.id.nav_manage) { //Tools
+        } else if (id == R.id.nav_manage) { // 한겨례
+            Intent intent = new Intent(Main2Activity.this,MainActivity.class);
+            intent.putExtra("company","han");
+            startActivity(intent);
 
         }
 

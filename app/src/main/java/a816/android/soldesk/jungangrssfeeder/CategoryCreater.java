@@ -42,6 +42,17 @@ public class CategoryCreater {
             "http://rss.donga.com/international.xml"
     };
 
+    private static final String[] HAN_TITLE = {"주요뉴스","인기뉴스","경제","정치","스포츠","대중문화","국제"};
+    private static final String[] HAN_URL = {
+            "http://www.hani.co.kr/rss/lead/",
+            "http://www.hani.co.kr/rss/newsrank/",
+            "http://www.hani.co.kr/rss/economy/",
+            "http://www.hani.co.kr/rss/politics/",
+            "http://www.hani.co.kr/rss/sports/",
+            "http://www.hani.co.kr/rss/culture/",
+            "http://www.hani.co.kr/rss/international/"
+    };
+
 
 
     public static ArrayList<CategoryInfo> create(String company){
@@ -62,6 +73,12 @@ public class CategoryCreater {
             case "dong":
                 for(int i = 0; i< DONGA_TITLE.length; i++) {
                     CategoryInfo ci = new CategoryInfo(DONGA_TITLE[i], DONGA_URL[i]);
+                    result.add(ci);
+                }
+                break;
+            case "han":
+                for(int i = 0; i< HAN_TITLE.length; i++) {
+                    CategoryInfo ci = new CategoryInfo(HAN_TITLE[i], HAN_URL[i]);
                     result.add(ci);
                 }
                 break;
